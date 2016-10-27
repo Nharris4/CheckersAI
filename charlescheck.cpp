@@ -5,12 +5,12 @@
 //	+-----------------------------------------------------------------------------+
 
 #include <iostream>
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <limits>
 #include <ctime>
-#include<vector>
+#include <vector>
 #include <cstring>
 #include <algorithm> 	
 #include "colormod.h"
@@ -624,7 +624,7 @@ void printDisplayFancy(int d[ROWS][COLS])
     int rr, cc, pp;
     
     printf("  +-------+-------+-------+-------+-------+-------+-------+-------+\n");
-    printf("  |       |       |       |       |       |       |       |       |\n");
+    printf("  |#######|       |#######|       |#######|       |#######|       |\n");
     
     for (rr=0; rr<ROWS; ++rr)
     {
@@ -645,20 +645,35 @@ void printDisplayFancy(int d[ROWS][COLS])
             else if(value2symbol(d[rr][cc])=='@'){
             	cout<< blue << "   @   " << def << "|";
             }
-            else{
+            else if(value2symbol(d[rr][cc])==' '){
             	cout<<"   "<< value2symbol(d[rr][cc])<<"   |";
-            };
+            }
+            else{
+            	cout<<"###"<< value2symbol(d[rr][cc])<<"###|";
+            }
             
         }
         printf("\n");
-        printf("  |       |       |       |       |       |       |       |       |\n");
-        printf("  +-------+-------+-------+-------+-------+-------+-------+-------+\n");
-        if(rr!=7){
-        	printf("  |       |       |       |       |       |       |       |       |\n");
+
+        if(rr%2 == 0){
+        	printf("  |#######|       |#######|       |#######|       |#######|       |\n");
+        	printf("  +-------+-------+-------+-------+-------+-------+-------+-------+\n");
+        	if(rr!=7){
+	        	printf("  |       |#######|       |#######|       |#######|       |#######|\n");
+	        }
         }
+        if(rr%2 == 1){
+        	printf("  |       |#######|       |#######|       |#######|       |#######|\n");
+        	printf("  +-------+-------+-------+-------+-------+-------+-------+-------+\n");
+        	if(rr!=7){
+	        	printf("  |#######|       |#######|       |#######|       |#######|       |\n");
+	        }
+        }
+        
+        
     }
     
-    printf("     a       b       c       d       e       f       g       h\n");
+    printf("      a       b       c       d       e       f       g       h\n");
 }
 
 void swap(int d[ROWS][COLS], int i, int j, int k, int l)
