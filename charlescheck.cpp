@@ -503,7 +503,6 @@ int playerMove(int d[ROWS][COLS], int player){
         	continue;
         }
         
-    	//swap(d,i-1,j - 'a',k-1,l - 'a');
     	if(Playersturn(d, player, i-1,j - 'a',k-1,l - 'a') == 0){
     	    break;
     	}
